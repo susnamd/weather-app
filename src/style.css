@@ -1,0 +1,51 @@
+body {
+  font-family: "Poppins", sans-serif !important;
+}
+a {
+  text-decoration: none !important;
+  color: #212529 !important;
+}
+a:focus {
+  color: #0d6efd !important;
+}
+li {
+  list-style-type: none;
+}
+.disabled {
+  pointer-events: none;
+}
+.btn-location {
+  padding: 16px !important;
+  margin-left: -10px !important;
+  display: block;
+}
+.box {
+  background-color: #f8f9fa;
+  padding: 20px !important;
+  border-radius: 20px;
+}
+.input-group-text {
+  background-color: #0d6efd !important;
+  border: 1px solid #0d6efd !important;
+}
+.input-group-text:hover {
+  background-color: #0b5ed7 !important;
+}
+.form-control:focus {
+  color: #212529;
+  background-color: #fff;
+  border-color: #0d6efd !important;
+  box-shadow: none !important;
+}
+.temp {
+  font-size: 74px;
+  font-weight: 800;
+  line-height: 1;
+}
+.icon-temp {
+  font-size: 50px;
+}
+.weather-units {
+  position: relative;
+  top: -34px;
+}
