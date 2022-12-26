@@ -49,3 +49,8 @@ li {
   position: relative;
   top: -34px;
 }
+.opensource {
+  display: inline;
+  font-size: 13px;
+  text-align: center;
+}
