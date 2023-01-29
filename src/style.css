@@ -10,6 +10,7 @@ a:focus {
 }
 li {
   list-style-type: none;
+  font-size: 15px;
 }
 .disabled {
   pointer-events: none;
