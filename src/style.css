@@ -1,16 +1,19 @@
 body {
   font-family: "Poppins", sans-serif !important;
+  background-color: #070b0d !important;
+  color: #f8f9fa !important;
 }
 a {
   text-decoration: none !important;
-  color: #212529 !important;
+  color: #06d6a0 !important;
 }
 a:focus {
-  color: #0d6efd !important;
+  color: #06d6a0 !important;
 }
 li {
   list-style-type: none;
-  font-size: 15px;
+  font-size: 14px;
+  font-weight: 300;
 }
 .disabled {
   pointer-events: none;
@@ -21,25 +24,43 @@ li {
   display: block;
 }
 .box {
-  background-color: #f8f9fa;
+  background-color: #151a1e;
   padding: 20px !important;
   border-radius: 20px;
 }
 .input-group-text {
-  background-color: #0d6efd !important;
-  border: 1px solid #0d6efd !important;
+  background-color: #06d6a0 !important;
+  border: 1px solid #06d6a0 !important;
 }
 .input-group-text:hover {
-  background-color: #0b5ed7 !important;
+  background-color: #06d6a0 !important;
 }
+.form-control,
 .form-control:focus {
-  color: #212529;
-  background-color: #fff;
-  border-color: #0d6efd !important;
+  color: #f8f9fa;
+  background-color: #1c2126 !important;
+  border-color: #06d6a0 !important;
   box-shadow: none !important;
 }
+.btn-outline-primary {
+  border: 1px solid #06d6a0 !important;
+  color: #06d6a0 !important;
+}
+.btn-outline-primary:hover {
+  background-color: #06d6a0 !important;
+  color: #212529 !important;
+}
+.btn-primary {
+  background-color: #06d6a0 !important;
+  color: #212529 !important;
+  border-color: #06d6a0 !important;
+}
+.daypic {
+  display: inline;
+  margin-bottom: 42px;
+}
 .temp {
-  font-size: 74px;
+  font-size: 65px;
   font-weight: 800;
   line-height: 1;
 }
