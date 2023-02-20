@@ -37,7 +37,7 @@ li {
 }
 .form-control,
 .form-control:focus {
-  color: #f8f9fa;
+  color: #f8f9fa !important;
   background-color: #1c2126 !important;
   border-color: #06d6a0 !important;
   box-shadow: none !important;
@@ -57,10 +57,10 @@ li {
 }
 .daypic {
   display: inline;
-  margin-bottom: 42px;
+  margin-bottom: 30px;
 }
 .temp {
-  font-size: 65px;
+  font-size: 50px;
   font-weight: 800;
   line-height: 1;
 }
@@ -69,7 +69,7 @@ li {
 }
 .weather-units {
   position: relative;
-  top: -34px;
+  top: -24px;
 }
 .opensource {
   display: inline;
