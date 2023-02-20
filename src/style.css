@@ -3,6 +3,10 @@ body {
   background-color: #070b0d !important;
   color: #f8f9fa !important;
 }
+.active {
+  color: #f8f9fa !important;
+  cursor: default;
+}
 a {
   text-decoration: none !important;
   color: #06d6a0 !important;
@@ -76,6 +80,7 @@ li {
   font-size: 13px;
   text-align: center;
 }
+
 .Weather-forcast {
   background-color: #1c2126;
   border-radius: 15px;
