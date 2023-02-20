@@ -30,8 +30,8 @@ function showCityWeather(response) {
 
   //show time
   function showTime() {
-    let dt = response.data.dt;
-    let dateTime = new Date(dt * 1000);
+    let dt = response.data.dt * 1000;
+    let dateTime = new Date(dt);
     let day = dateTime.getDay();
     let weekdays = [
       "Sunday",
@@ -43,7 +43,13 @@ function showCityWeather(response) {
       "Saturday",
     ];
     let minuits = dateTime.getMinutes();
+    if (minuits < 10) {
+      minuits = `{0}minuits`;
+    }
     let hours = dateTime.getHours();
+    if (hours < 10) {
+      hours = `{0}hours`;
+    }
     let currentdate = document.querySelector("#current-date");
     currentdate.innerHTML = `${weekdays[day]}, ${hours}:${minuits}`;
   }

@@ -76,3 +76,8 @@ li {
   font-size: 13px;
   text-align: center;
 }
+.Weather-forcast {
+  background-color: #1c2126;
+  border-radius: 15px;
+  margin: 8px;
+}
