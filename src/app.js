@@ -6,7 +6,6 @@ let input = document.querySelector("#floatingInput");
 let temp = document.querySelector("#temp");
 
 function showCityWeather(response) {
-  console.log(response);
   // show city
   let showCity = document.querySelector("#city");
   showCity.innerHTML = `${response.data.name}, ${response.data.sys.country}`;
@@ -54,6 +53,13 @@ function showCityWeather(response) {
     currentdate.innerHTML = `${weekdays[day]}, ${hours}:${minuits}`;
   }
   showTime();
+  //show icon
+  let icon = document.querySelector("#Weather-icon");
+  let weatherIcon = response.data.weather[0].icon;
+  icon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
+  );
 }
 
 // getting data from Open Weather Api
