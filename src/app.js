@@ -9,8 +9,8 @@ let celsius = document.querySelector("#celsius");
 let fahrenheit = document.querySelector("#fahrenheit");
 let celsiusTemp = null;
 
-// displaying forcast
-function showForcast() {
+// displaying forcast html
+function showForcast(response) {
   let forcast = document.querySelector("#Weather-forcast");
   let forcastHTML = `<div class="row">`;
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
@@ -26,6 +26,13 @@ function showForcast() {
   });
   forcastHTML = forcastHTML + `</div>`;
   forcast.innerHTML = forcastHTML;
+}
+
+//displaying forcast api
+function getForcast(coordinates) {
+  let newkey = "b1a8336ff1e05b64da5625e4158fbea3";
+  let apiurl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${newkey}&units=metric`;
+  axios.get(apiurl).then(showForcast);
 }
 
 function showCityWeather(response) {
@@ -88,6 +95,7 @@ function showCityWeather(response) {
     "src",
     `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
   );
+  getForcast(response.data.coord);
 }
 showForcast();
 // getting data from Open Weather Api
