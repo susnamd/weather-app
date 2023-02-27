@@ -9,6 +9,25 @@ let celsius = document.querySelector("#celsius");
 let fahrenheit = document.querySelector("#fahrenheit");
 let celsiusTemp = null;
 
+// displaying forcast
+function showForcast() {
+  let forcast = document.querySelector("#Weather-forcast");
+  let forcastHTML = `<div class="row">`;
+  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  days.forEach(function (day) {
+    forcastHTML =
+      forcastHTML +
+      `<div class="col Weather-forcast text-center">
+      <div class="forcast-date">${day}</div>
+      <img src="http://openweathermap.org/img/wn/03n.png" alt="" />
+      <span id="forcast-temp-min" class="forcast-temp">18</span>
+      <span id="forcast-temp-max" class="forcast-temp">18</span>
+    </div>`;
+  });
+  forcastHTML = forcastHTML + `</div>`;
+  forcast.innerHTML = forcastHTML;
+}
+
 function showCityWeather(response) {
   // show city
   let showCity = document.querySelector("#city");
@@ -16,8 +35,10 @@ function showCityWeather(response) {
   // show description
   let description = document.querySelector("#description");
   description.innerHTML = response.data.weather[0].description;
-  // show temp
+
+  //storing tempreture for conversion
   temp.innerHTML = Math.round(response.data.main.temp);
+  // show temp
   function showCelsius(event) {
     event.preventDefault();
     celsius.classList.add("active");
@@ -33,8 +54,6 @@ function showCityWeather(response) {
   //show Wind
   let Wind = document.querySelector("#Wind");
   Wind.innerHTML = `Wind: ${Math.round(response.data.wind.speed)}km/h`;
-
-  //storing tempreture for conversion
 
   //show time
   function showTime() {
@@ -70,6 +89,7 @@ function showCityWeather(response) {
     `http://openweathermap.org/img/wn/${weatherIcon}@2x.png`
   );
 }
+showForcast();
 // getting data from Open Weather Api
 function retrieveWeatherData(event) {
   event.preventDefault();
