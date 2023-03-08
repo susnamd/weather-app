@@ -104,11 +104,11 @@ function showCityWeather(response) {
     ];
     let minuits = dateTime.getMinutes();
     if (minuits < 10) {
-      minuits = `0` + `minuits`;
+      minuits = "0" + minuits;
     }
     let hours = dateTime.getHours();
     if (hours < 10) {
-      hours = `0` + `hours`;
+      hours = "0" + hours;
     }
     let currentdate = document.querySelector("#current-date");
     currentdate.innerHTML = `${weekdays[day]}, ${hours}:${minuits}`;
