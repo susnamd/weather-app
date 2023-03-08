@@ -1,6 +1,6 @@
 // showing data from Api
 let citywether = document.querySelector("#citywether");
-let key = "82b61663c38282737706802a285b5b3a";
+let key = "b1a8336ff1e05b64da5625e4158fbea3";
 // global variables
 let input = document.querySelector("#floatingInput");
 let currentLocation = document.querySelector("#current-location");
@@ -9,29 +9,55 @@ let celsius = document.querySelector("#celsius");
 let fahrenheit = document.querySelector("#fahrenheit");
 let celsiusTemp = null;
 
+//converting timestamp to readable time for forecast
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saterday",
+  ];
+  return weekdays[day];
+}
+
 // displaying forcast html
 function showForcast(response) {
-  let forcast = document.querySelector("#Weather-forcast");
+  let Weatherforcast = document.querySelector("#Weather-forcast");
+  let forecast = response.data.daily;
+  console.log(forecast);
   let forcastHTML = `<div class="row">`;
-  let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  days.forEach(function (day) {
-    forcastHTML =
-      forcastHTML +
-      `<div class="col Weather-forcast text-center">
-      <div class="forcast-date">${day}</div>
-      <img src="http://openweathermap.org/img/wn/03n.png" alt="" />
-      <span id="forcast-temp-min" class="forcast-temp">18</span>
-      <span id="forcast-temp-max" class="forcast-temp">18</span>
-    </div>`;
+
+  forecast.forEach(function (forecastdays, index) {
+    if (index < 6) {
+      forcastHTML =
+        forcastHTML +
+        `<div class="col Weather-forcast text-center">
+          <div class="forcast-date">${formatDay(forecastdays.dt)}</div>
+          <img src="http://openweathermap.org/img/wn/${
+            forecastdays.weather[0].icon
+          }.png" alt="" />
+          <div class="decs">${forecastdays.weather[0].description}</div>
+          <span id="forcast-temp-min" class="forcast-temp">${Math.round(
+            forecastdays.temp.min
+          )}°</span> 
+          <span id="forcast-temp-max" class="forcast-temp">${Math.round(
+            forecastdays.temp.max
+          )}°</span>
+        </div>`;
+    }
   });
   forcastHTML = forcastHTML + `</div>`;
-  forcast.innerHTML = forcastHTML;
+  Weatherforcast.innerHTML = forcastHTML;
 }
 
 //displaying forcast api
 function getForcast(coordinates) {
-  let newkey = "b1a8336ff1e05b64da5625e4158fbea3";
-  let apiurl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${newkey}&units=metric`;
+  let apiurl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${key}&units=metric`;
   axios.get(apiurl).then(showForcast);
 }
 
@@ -78,11 +104,11 @@ function showCityWeather(response) {
     ];
     let minuits = dateTime.getMinutes();
     if (minuits < 10) {
-      minuits = `{0}minuits`;
+      minuits = `0` + `minuits`;
     }
     let hours = dateTime.getHours();
     if (hours < 10) {
-      hours = `{0}hours`;
+      hours = `0` + `hours`;
     }
     let currentdate = document.querySelector("#current-date");
     currentdate.innerHTML = `${weekdays[day]}, ${hours}:${minuits}`;
@@ -97,7 +123,7 @@ function showCityWeather(response) {
   );
   getForcast(response.data.coord);
 }
-showForcast();
+
 // getting data from Open Weather Api
 function retrieveWeatherData(event) {
   event.preventDefault();
